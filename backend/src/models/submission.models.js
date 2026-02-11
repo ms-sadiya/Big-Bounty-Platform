@@ -19,7 +19,7 @@ const submissionSchema = new Schema(
     proofLink: {
       type: String,
       required: true,
-       trim: true,
+      trim: true,
     },
     status: {
       type: String,
@@ -27,12 +27,9 @@ const submissionSchema = new Schema(
       default: "PENDING",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 submissionSchema.index({ bug: 1, user: 1 }, { unique: true });
 
-export const Submission = mongoose.model(
-  "Submission",
-  submissionSchema
-);
+export const Submission = mongoose.model("Submission", submissionSchema);

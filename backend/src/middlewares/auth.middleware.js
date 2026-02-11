@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { User } from "../models/user.model.js";
+import { User } from "../models/user.models.js";
 
 export const verifyJWT = asyncHandler(async (req, res, next) => {
   const token =
@@ -12,13 +12,10 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
     throw new ApiError(401, "Unauthorized request");
   }
 
-  const decoded = jwt.verify(
-    token,
-    process.env.ACCESS_TOKEN_SECRET
-  );
+  const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
   const user = await User.findById(decoded._id).select(
-    "-password -refreshToken"
+    "-password -refreshToken",
   );
 
   if (!user) {

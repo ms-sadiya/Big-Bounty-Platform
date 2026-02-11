@@ -32,7 +32,7 @@ const bugSchema = new Schema(
       ref: "User",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Bug = mongoose.model("Bug", bugSchema);
