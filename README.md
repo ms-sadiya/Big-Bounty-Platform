@@ -30,7 +30,7 @@ A robust backend for a Bug Bounty platform where users post technical issues wit
 - `CORS_ORIGIN` — allowed origin(s)
 - `PORT` — optional, default `8000`
 
-## 📋 API Summary (Base URL: `/api/v1`)
+## 📋 API Summary (Base URL: `/api/v1`)   
 
 ### Authentication
 | Method | Endpoint | Description |
