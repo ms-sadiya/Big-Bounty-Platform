@@ -1,0 +1,105 @@
+.create-bug-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.create-bug-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.create-bug-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.create-bug-header p {
+  color: var(--gray-600);
+  font-size: 1.125rem;
+}
+
+.create-bug-form {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+}
+
+.form-grid {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--gray-500);
+  font-size: 0.75rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-actions .btn {
+  flex: 1;
+  min-width: 150px;
+}
+
+.tips-section {
+  background: var(--gray-50);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--primary-color);
+}
+
+.tips-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.tips-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.tips-section li {
+  margin-bottom: 0.75rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .create-bug-container {
+    padding: 1rem;
+  }
+
+  .form-actions {
+    gap: 0.5rem;
+  }
+
+  .form-actions .btn {
+    min-width: auto;
+  }
+}

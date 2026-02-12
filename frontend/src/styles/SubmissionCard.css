@@ -1,0 +1,150 @@
+.submission-card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.submission-card:hover {
+  box-shadow: var(--box-shadow-lg);
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.submitter-info {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.submitter-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.submitter-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitter-name {
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.submitter-name:hover {
+  color: var(--primary-color);
+}
+
+.submission-date {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+.submission-content {
+  margin-bottom: 1.5rem;
+}
+
+.submission-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.submission-description {
+  color: var(--gray-600);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.submission-proof {
+  background-color: var(--gray-50);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.submission-proof h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+}
+
+.proof-list {
+  list-style: none;
+  padding: 0;
+}
+
+.proof-item {
+  margin-bottom: 0.5rem;
+}
+
+.proof-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  word-break: break-all;
+  transition: var(--transition);
+}
+
+.proof-link:hover {
+  text-decoration: underline;
+  color: #4338ca;
+}
+
+.rejection-reason {
+  background-color: #fef2f2;
+  border-left: 4px solid var(--danger-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.rejection-reason strong {
+  color: var(--danger-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.rejection-reason p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.submission-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.submission-actions .btn {
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .submission-card {
+    padding: 1rem;
+  }
+
+  .submission-header {
+    flex-direction: column;
+  }
+
+  .submission-actions {
+    flex-direction: column;
+  }
+}
