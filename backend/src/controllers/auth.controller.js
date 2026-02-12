@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
     fullName,
     password,
   });
-
+  console.log("Body:", req.body);
   const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
     user._id,
   );
@@ -122,6 +122,14 @@ const loginUser = asyncHandler(async (req, res) => {
     );
 });
 
+// Use for self 
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "User fetched"));
+});
+
+
 //  Logout User
 const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
@@ -152,7 +160,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
   const decoded = jwt.verify(
     incomingRefreshToken,
-    process.env.REFRESH_TOKEN_SECRET
+    process.env.REFRESH_TOKEN_SECRET,
   );
 
   const user = await User.findById(decoded._id);
@@ -171,10 +179,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .cookie("accessToken", accessToken, options)
-    .json(
-      new ApiResponse(200, { accessToken }, "Access token refreshed")
-    );
+    .json(new ApiResponse(200, { accessToken }, "Access token refreshed"));
 });
 
-
-export { registerUser, loginUser, logoutUser, refreshAccessToken };
+export { registerUser, loginUser, logoutUser, refreshAccessToken, getCurrentUser };

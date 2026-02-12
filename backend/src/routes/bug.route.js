@@ -3,16 +3,19 @@ import {
   createBug,
   getAllBugs,
   getBugById,
+  getMyBugs,
+  deleteBug,
 } from "../controllers/bug.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.route("/")
-  .get(getAllBugs)              // Public
-  .post(verifyJWT, createBug);  // Protected
+// General Route
+router.route("/").get(getAllBugs).post(verifyJWT, createBug);
 
-router.route("/:bugId")
-  .get(getBugById);             // Public
+router.route("/my-bugs").get(verifyJWT, getMyBugs); 
+
+// Dynamic Routes 
+router.route("/:bugId").get(getBugById).delete(verifyJWT, deleteBug);
 
 export default router;

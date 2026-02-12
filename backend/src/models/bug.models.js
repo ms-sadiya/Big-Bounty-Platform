@@ -19,7 +19,7 @@ const bugSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["OPEN", "CLOSED"],
+      enum: ["OPEN", "IN_REVIEW", "CLOSED"],
       default: "OPEN",
     },
     creator: {

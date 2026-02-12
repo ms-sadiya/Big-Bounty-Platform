@@ -34,7 +34,12 @@ const createBug = asyncHandler(async (req, res) => {
 const getAllBugs = asyncHandler(async (req, res) => {
   const { page = 1, limit = 10, status, search } = req.query;
 
-  const query = {};
+  const query = {
+    $or: [
+      { status: "OPEN" },
+      { creator: req.user?._id } // Requires user to be logged in
+    ]
+  };
 
   if (status) {
     query.status = status.toUpperCase();
@@ -91,6 +96,7 @@ const getBugById = asyncHandler(async (req, res) => {
   );
 });
 
+// Mybugs
 const getMyBugs = asyncHandler(async (req, res) => {
   const bugs = await Bug.find({ creator: req.user._id })
     .sort({ createdAt: -1 });
@@ -101,4 +107,35 @@ const getMyBugs = asyncHandler(async (req, res) => {
 });
 
 
-export { createBug, getAllBugs, getBugById };
+// bug.controller.js
+
+const deleteBug = asyncHandler(async (req, res) => {
+  const { bugId } = req.params;
+
+  const bug = await Bug.findById(bugId);
+
+  if (!bug) {
+    throw new ApiError(404, "Bug not found");
+  }
+
+  // Verify ownership: only the creator can delete
+  if (bug.creator.toString() !== req.user._id.toString()) {
+    throw new ApiError(403, "You do not have permission to delete this bug");
+  }
+
+  // Optional: Prevent deletion if the bug is already CLOSED
+  if (bug.status === "CLOSED") {
+    throw new ApiError(400, "Cannot delete a closed bug with a declared winner");
+  }
+
+  await Bug.findByIdAndDelete(bugId);
+
+  // Clean up: Delete all associated submissions
+  await Submission.deleteMany({ bug: bugId });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Bug and associated submissions deleted successfully"));
+});
+
+export { createBug, getAllBugs, getBugById, getMyBugs, deleteBug };

@@ -1,0 +1,150 @@
+.navbar {
+  background: white;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  color: var(--gray-700);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.nav-link-primary:hover {
+  background-color: #4338ca;
+}
+
+.navbar-user {
+  position: relative;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.user-dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: calc(100% + 1px);
+  right: 0;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-lg);
+  min-width: 200px;
+  z-index: 200;
+  border: 1px solid var(--gray-200); /* Definition helps on mobile */
+}
+
+.user-dropdown.show {
+  display: block;
+}
+.navbar-user:hover .user-dropdown {
+  display: block;
+}
+
+.dropdown-item {
+display: block;
+  width: 100%;
+  padding: 1rem; 
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.dropdown-item:hover {
+  background-color: var(--gray-100);
+  color: var(--primary-color);
+}
+
+.logout-btn {
+  border-top: 1px solid var(--gray-200);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+
+  .user-name {
+    display: none; /* Hide name on small screens to save space if needed */
+  }
+
+  .navbar-menu {
+    gap: 1rem;
+  }
+
+  .user-dropdown {
+    position: fixed; /* Fix to viewport for better touch reliability */
+    top: 70px;
+    right: 10px;
+    left: 10px; /* Make it wider/centered on mobile */
+    min-width: auto;
+  }
+}
